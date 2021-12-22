@@ -17,8 +17,8 @@ public class Conexion {
     private static Conexion conexion;
     private EntityManagerFactory bd; 
  
-    private Conexion() {
-        this.bd=Persistence.createEntityManagerFactory("Web_MVC_JPAPU");
+    public Conexion() {
+        this.bd=Persistence.createEntityManagerFactory("TelefoniaPU");
          
     }
      
