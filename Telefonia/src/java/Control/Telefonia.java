@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Negocio.Telefonia_negocio;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jesus
  */
-public class ListarPlanes extends HttpServlet {
+public class Telefonia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,18 +30,23 @@ public class ListarPlanes extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListarPlanes</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListarPlanes at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            /* TODO output your page here. You may use following sample code. */
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet Telefonia</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet Telefonia at " + request.getContextPath() + "</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+           Telefonia_negocio t=new Telefonia_negocio();
+        String listadoPlanes=t.getListadoPlanes();
+        //Object:
+        request.getSession().setAttribute("listado",listadoPlanes);
+        request.getRequestDispatcher("./JSP/Cotizador.jsp").forward(request, response);
         }
     }
 
